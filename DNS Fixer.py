@@ -1,18 +1,23 @@
 import requests
 import os
-#at the moment this code only checks if it is running with root privileges and checks your internet connection
+
 url = "https://www.google.com/"
 timeout = 5
-
+maindns =("8.8.8.8")
+backupdns = ("8.8.8.4")
 
 if os.geteuid() == 0:
     try:
         request = requests.get(url, timeout=timeout)
-        print(request)
         print("Connected to the Internet")
-        #this code is not completed it will be updated with a working cod
+        print("Your DNS is probably Alright...")
     except (requests.ConnectionError, requests.Timeout) as exception:
-        print("No internet connection.")
-
+        print("Possible DNS Failure!")
+        print("Rewriting /etc/resolv.conf...")
+        f = open('/etc/resolv.conf', 'r+')
+        f.truncate(0)
+        f.write("nameserver "+ maindns+"\nnameserver "+ backupdns)
+        f.close()
+        print("Good to Go...")
 else:
-    print("Please run this script with root Privileages.")
+    raise Exception("Please run this script with root Privileages.")
