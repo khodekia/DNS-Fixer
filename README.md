@@ -11,7 +11,7 @@ sudo nano .bashrc
 
 edit the script path in the following command :
 ```
-alias fixdns='sudo python3 [File path]/DNS\ Fixer.py'
+alias fixdns='sudo python3 [File path]DNS\ Fixer.py'
 ```
 Go to the end of bashrc file and Paste it.
 
