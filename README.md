@@ -1,7 +1,7 @@
 # DNS-Fixer
 When nekoray isn't closed properly, it usually messes up /etc/resolv.conf file, so here is the lazy fix. 
 
-##Creating Command in Linux
+## Creating Command in Linux
 First store the script in a permanent location
 
 Open terminal & type :
